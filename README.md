@@ -44,3 +44,14 @@ all the files BUT converted from SRA format have "1" for forward, and "2" for th
 The SRA->FASTQ transformation with SRA-toolkit created IDENTICAL headers for the both reads in a pair.
 The latter means that the only way to distinguish the members of a pair is to proceed then in a different Hadoop jobs, using the mapperForward.py and the mapperReverse.py scripts, as these scripts add  ".1" and ".2" correspondingly to  the end of the  headers. 
 The ".1" and ".2" are being engaged in the reducerMerge.py.
+
+Example:
+------------
+SRA-->FASTQ converted reads.
+
+Forward:
+
+@SRR611085.1 FCD0R1VACXX:4:1101:1589:2132 length=100
+ATGACAACTAGAACCATAACCGGATCTTAAAAACCTAAGTATTGANNNTTTGTTAGAAGATACAAAGACAAAGACTCATACGGACTTCGACTACACTATC
++SRR611085.1 FCD0R1VACXX:4:1101:1589:2132 length=100
+_bbceeeegggggh\feggeefhffcegiiihiheffgbIXacfgBBBLLaeeghhfgf\bdggbgegac_Zaddddcdcca^^acbbacaaX```Y`_b
