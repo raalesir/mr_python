@@ -9,7 +9,7 @@ The price for being massively parallel is the requirement of the FASTQ data bein
 DESCRIPTION
 =============
 mapperForward.py
-===============
+---------------
 
 reads the FASTQ chunk, locates the header line, and transforms 4 line format the a singular line format, consisting of the 1st, 2-nd and 4-th lines in the FASTQ block.
 The transformed FASTQ header contains just alphanumerics + "@" sign. To the end the ".1" is added in order to be able to identify this read in the following code.
