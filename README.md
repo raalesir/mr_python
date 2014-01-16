@@ -1,15 +1,17 @@
 INTRO
 -------------
 These three scripts below, written in Python, are to substitute the Perl script for the preprocessing stage of the Crossbow.
-Provided Python scripts are in MR-style, meaning that they are being executed in a massive parallel fashion, compare to the natively singular Perl script of the Crossbow.
+Provided Python scripts are in the MR-style, meaning that they are being executed in a massive parallel fashion, compare to the poorly parallel  Perl script of the Crossbow.
 The price for being massively parallel is the requirement of the FASTQ data being:
+
 1) BZIP2 archived, since bzip2 provides  a splittable archive format
+
 2) the FASTQ data have to be accessible by the Hadoop via i.e. sshfs of similar.
 
 mapperForward.py
 ---------------
 
-reads the FASTQ chunk, locates the header line, and transforms 4 line format the a singular line format, consisting of the 1st, 2-nd and 4-th lines in the FASTQ block.
+reads the FASTQ chunk on each Hadoop datanode, locates the header line, and transforms 4 line format the a singular line format, consisting of the 1st, 2-nd and 4-th lines in the FASTQ block.
 The transformed FASTQ header contains just alphanumerics + "@" sign. To the end the ".1" is added in order to be able to identify this read in the following code.
 
 mapperReverse.py
