@@ -23,8 +23,8 @@ mapperMerge.py
 -----------------
 
 creates the Crossbow formatted file i.e. each line for the pair-ended read consists of 5 fields, namely
-1) read ID
 
+1) read ID
 2) forward read
 
 3) forward qualities
