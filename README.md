@@ -24,14 +24,10 @@ mapperMerge.py
 
 creates the Crossbow formatted file i.e. each line for the pair-ended read consists of 5 fields, namely
 
-1) read ID
-
-2) forward read
-
-3) forward qualities
-
-4) reverse reads
-
+1) read ID 
+2) forward read 
+3) forward qualities 
+4) reverse reads 
 5) reverse qualities
 
 
@@ -47,11 +43,38 @@ The ".1" and ".2" are being engaged in the reducerMerge.py.
 
 Example:
 ------------
-SRA-->FASTQ converted reads.
+SRA-->FASTQ converted reads. (note the identical headers)
 
-Forward:
+Forward: 
 
-@SRR611085.1 FCD0R1VACXX:4:1101:1589:2132 length=100
-ATGACAACTAGAACCATAACCGGATCTTAAAAACCTAAGTATTGANNNTTTGTTAGAAGATACAAAGACAAAGACTCATACGGACTTCGACTACACTATC
-+SRR611085.1 FCD0R1VACXX:4:1101:1589:2132 length=100
-_bbceeeegggggh\feggeefhffcegiiihiheffgbIXacfgBBBLLaeeghhfgf\bdggbgegac_Zaddddcdcca^^acbbacaaX```Y`_b
+@SRR611085.1 FCD0R1VACXX:4:1101:1589:2132 length=100 
+ATGACAACTAGAACCATAACCGGATCTTAAAAACCTAAGTATTGANNNTTTGTTAGAAGATACAAAGACAAAGACTCATACGGACTTCGACTACACTATC 
++SRR611085.1 FCD0R1VACXX:4:1101:1589:2132 length=100 
+\_bbceeeegggggh\feggeefhffcegiiihiheffgbIXacfgBBBLLaeeghhfgf\bdggbgegac_Zaddddcdcca^^acbbacaaX\`\`\`Y\`\_b 
+
+Reverse:
+
+@SRR611085.1 FCD0R1VACXX:4:1101:1589:2132 length=100 
+TTCTTGCTTCTAAAAGCTTTGATGGTTTAGCCGAATTCCGTATGAGAATTTGTCTATGTATCTTCTAACAAGGATACAATATTTAGGCTTTTAAGATCCG 
++SRR611085.1 FCD0R1VACXX:4:1101:1589:2132 length=100 
+bbbeeeeegggfgiiiiiiii]ghhggigff`gfhiihhiaafhffafg]effhfhfhghiiihhiihiihhhg[dgegggeeeeeecddddbbcccccc 
+
+
+This pair after mapperForward.py and the mapperReverse.py:
+
+@SRR6110851FCD0R1VACXX4110115892132length100.1  ATGACAACTAGAACCATAACCGGATCTTAAAAACCTAAGTATTGANNNTTTGTTAGAAGATACAAAGACAAAGACTCATACGGACTTCGACTACACTATC 
+\_bbceeeegggggh\feggeefhffcegiiihiheffgbIXacfgBBBLLaeeghhfgf\bdggbgegac_Zaddddcdcca^^acbbacaaX\`\`\`Y\`\_b 
+
+and 
+
+@SRR6110851FCD0R1VACXX4110115892132length100.2  
+TTCTTGCTTCTAAAAGCTTTGATGGTTTAGCCGAATTCCGTATGAGAATTTGTCTATGTATCTTCTAACAAGGATACAATATTTAGGCTTTTAAGATCCG 
+bbbeeeeegggfgiiiiiiii]ghhggigff`gfhiihhiaafhffafg]effhfhfhghiiihhiihiihhhg[dgegggeeeeeecddddbbcccccc
+
+After the reducerMerge.py
+
+@SRR6110851FCD0R1VACXX4110115892132length100.1  ATGACAACTAGAACCATAACCGGATCTTAAAAACCTAAGTATTGANNNTTTGTTAGAAGATACAAAGACAAAGACTCATACGGACTTCGACTACACTATC 
+\_bbceeeegggggh\feggeefhffcegiiihiheffgbIXacfgBBBLLaeeghhfgf\bdggbgegac_Zaddddcdcca^^acbbacaaX\`\`\`Y\`\_b 
+TTCTTGCTTCTAAAAGCTTTGATGGTTTAGCCGAATTCCGTATGAGAATTTGTCTATGTATCTTCTAACAAGGATACAATATTTAGGCTTTTAAGATCCG     
+bbbeeeeegggfgiiiiiiii]ghhggigff`gfhiihhiaafhffafg]effhfhfhghiiihhiihiihhhg[dgegggeeeeeecddddbbcccccc
+
