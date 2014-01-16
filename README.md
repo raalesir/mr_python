@@ -25,6 +25,7 @@ mapperMerge.py
 creates the Crossbow formatted file i.e. each line for the pair-ended read consists of 5 fields, namely
 
 1) read ID
+
 2) forward read
 
 3) forward qualities
@@ -36,7 +37,8 @@ creates the Crossbow formatted file i.e. each line for the pair-ended read consi
 
 COMMENTS
 -------------
-In fact there is no a real standard in the FASTQ header format: it changes constantly.  The only things one can rely on in that the header is unique in the whole FASTQ file.
+In fact there is no a real standard in the FASTQ header format: it changes constantly: http://en.wikipedia.org/wiki/FASTQ_format
+The only things one can rely on in that the header is unique in the whole FASTQ file.
 To distinguish the reads in a pair is not so obvious. The reason is the following:
 all the files BUT converted from SRA format have "1" for forward, and "2" for the reverse reads, making the task to distinct them an easy one.
 The SRA->FASTQ transformation with SRA-toolkit created IDENTICAL headers for the both reads in a pair.
