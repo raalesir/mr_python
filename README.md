@@ -24,9 +24,13 @@ mapperMerge.py
 
 creates the Crossbow formatted file i.e. each line for the pair-ended read consists of 5 fields, namely
 1) read ID
+
 2) forward read
+
 3) forward qualities
+
 4) reverse reads
+
 5) reverse qualities
 
 
@@ -35,6 +39,6 @@ COMMENTS
 In fact there is no a real standard in the FASTQ header format: it changes constantly.  The only things one can rely on in that the header is unique in the whole FASTQ file.
 To distinguish the reads in a pair is not so obvious. The reason is the following:
 all the files BUT converted from SRA format have "1" for forward, and "2" for the reverse reads, making the task to distinct them an easy one.
-The SRA->FASTQ transformation with SRA-toolkit created {\it IDENTICAL} headers for the both reads in a pair.
+The SRA->FASTQ transformation with SRA-toolkit created IDENTICAL headers for the both reads in a pair.
 The latter means that the only way to distinguish the members of a pair is to proceed then in a different Hadoop jobs, using the mapperForward.py and the mapperReverse.py scripts, as these scripts add  ".1" and ".2" correspondingly to  the end of the  headers. 
 The ".1" and ".2" are being engaged in the reducerMerge.py.
