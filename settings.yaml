@@ -1,0 +1,10 @@
+hadoopPath: /usr/lib/hadoop-0.20-mapreduce
+streamingJar: /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming.jar
+appsPath: apps
+outputPath: output
+tempPath: tmp
+localWorkspace: workspace
+hdfsWorkspace: workspace
+cloudUser: cloudgene
+mapRed: http://cloudgene.uibk.ac.at/downloads/cloudgene-0.3.0.zip
+cloudFolder: tools
