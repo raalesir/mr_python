@@ -6,7 +6,15 @@ def read_input(files):
 	for line in files:
 	        yield line.strip()
 
-def main():
+sep = sys.argv[1]
+if sep == 'space': 
+	sep=' '
+elif sep == 'none':
+	sep=None
+
+#print 'the sep is', sep
+
+def main(sep):
 	list =[]
 	# split pattern for FASTQ header
 	#pattern=re.compile("[\s+\\,.:=]")
@@ -22,7 +30,12 @@ def main():
 			elif (line[0] == '+'):
 				if nLines - tmp == 2: match = True; nLines = 0
 		else:	
-			if (nLines == 1):	list.append(''.join(re.split(pattern,line))+'.1')
+			if (nLines == 1):	
+				if sep: 
+					list.append(line.split(sep)[0]+'.1')
+				else:
+					list.append(''.join(line.split('.')) + '.1')
+			#if (nLines == 1):	list.append(''.join(re.split(pattern,line))+'.1')
 			else: list.append(line)
 			if nLines > 3: 
 			 nLines =1
@@ -32,4 +45,4 @@ def main():
 			 nLines += 1
 
 if __name__ == "__main__":
-	main()
+	main(sep)
