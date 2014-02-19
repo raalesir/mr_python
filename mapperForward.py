@@ -41,7 +41,7 @@ def main(sep):
 			#list.append(next(lines))
 			list.append(next(lines))
 		except StopIteration: break
-		print "%s\t%s %s" % (list[0], list[1], list[2])
+		print "%s\t%s\t%s" % (list[0], list[1], list[2])
 		list = []
 
 if __name__ == "__main__":
