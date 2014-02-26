@@ -38,7 +38,6 @@ def main(sep):
 				list.append('@'+hashlib.sha1(line).hexdigest() +mate)
 			list.append(next(lines))
 			_=next(lines)
-			#list.append(next(lines))
 			list.append(next(lines))
 		except StopIteration: break
 		print "%s\t%s\t%s" % (list[0], list[1], list[2])
