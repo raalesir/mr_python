@@ -1,4 +1,4 @@
-name: lalala
+name: Crossbow, pair-ended reads
 description: A scalable software pipeline for whole genome resequencing analysis. It combines Bowtie, an ultrafast and memory efficient short read aligner, and SoapSNP, and an accurate genotyper. These tools are combined in an automatic, parallel pipeline.
 category: Genetics
 version: 1.1.2
