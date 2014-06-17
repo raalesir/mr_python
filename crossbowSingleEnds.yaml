@@ -111,7 +111,7 @@ mapred:
     - id: bowtie_arguments
       description: Reporting mode agruments for  Bowtie
       type: text
-      value: -X 600 --chunkmbs 200 
+      value: -M 1 --chunkmbs 400 
       required: false
 
     - id: quality
