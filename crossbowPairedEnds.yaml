@@ -65,10 +65,10 @@ mapred:
               -Dmapred.text.key.partitioner.options=-k1,1
               -Dmapred.reduce.slowstart.completed.maps=1.0
               -Dio.sort.record.percent=0.06
-              -Dio.sort.mb=700
+              -Dio.sort.mb=1500
               -Dtasktracker.http.threads=80
-              -Dio.sort.factor=5
-              -Dmapred.child.java.opts=-Xmx1000m
+              -Dio.sort.factor=10
+              -Dmapred.child.java.opts=-Xmx3500m
               -Dmapred.inmem.merge.threshold=0
               -Dmapred.reduce.parallel.copies=50
               -input $temp/format*              
@@ -78,7 +78,7 @@ mapred:
                                                                                                                                                    
                                                                                                                                                    
     - name: Alignment                                                                                                                              
-      mapper: Align.pl  --discard-reads=0 --ref=$reference --destdir=/tmp/$job_id --partlen=1000000 --qual=$quality --truncate=0 -- --partition 1000000 --mm -t --hadoopout --startverbose $bowtie_arguments
+      mapper: Align.pl  --discard-reads=0 --ref=$reference --destdir=/tmp/$job_id --partlen=1000000 --qual=$quality --truncate=0 -- --partition 1000000 --mm -t --hadoopout --startverbose $bowtie_arguments 
       params: -Dmapred.output.compress=true
               -Dmapred.output.compression.codec=org.apache.hadoop.io.compress.BZip2Codec
               -input $temp/formatMerge
@@ -100,10 +100,10 @@ mapred:
               -D mapred.text.key.partitioner.options=-k1,2
               -Dmapred.reduce.slowstart.completed.maps=1.0
               -Dmapred.task.timeout=1200000
-              -Dio.sort.mb=700
+              -Dio.sort.mb=1500
               -input $temp/align
               -output $temp/snp
-              -numReduceTasks 280
+              -numReduceTasks $nReducers
               -partitioner org.apache.hadoop.mapred.lib.KeyFieldBasedPartitioner
               -file Soapsnp.pl
               -file Get.pm
@@ -170,6 +170,13 @@ mapred:
        'none': SRA->FASTQ, identical headers for a pair
       value: '/'
       required: true
+
+    - id: nReducers
+      description: Number of Reducers for SNP calling stage
+      type: text
+      value: 224
+      required: true
+
 
   outputs:
     - id: output
