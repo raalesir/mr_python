@@ -45,7 +45,7 @@ mapred:
 
 #
     - name: Alignment                       
-      mapper: Align.pl  --discard-reads=0 --ref=$reference --destdir=/tmp/$job_id --partlen=1000000 --qual=$quality --truncate=0 -- --partition 1000000 --mm -t --hadoopout --startverbose $bowtie_arguments --tempdir=/data/crossbow
+      mapper: Align.pl  --discard-reads=0 --ref=$reference --destdir=/tmp/$job_id --partlen=1000000 --qual=$quality --truncate=0 -- --partition 1000000 --mm -t --hadoopout --startverbose $bowtie_arguments
       params: -Dmapred.output.compress=true
               -Dmapred.output.compression.codec=org.apache.hadoop.io.compress.BZip2Codec
               -input $temp/formatForward
